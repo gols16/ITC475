@@ -1,0 +1,167 @@
+/* Header: #add8e6 (light blue)
+Header Separator: #d3d3d3 (light grey)
+Footer: #000000 (black)
+Navigation hover-over: ##ffa500 (orange)*/
+
+
+body {
+    background-color: white;
+}
+
+h1 {
+    background-color: #add8e6;
+    border-bottom: 20px solid #d3d3d3
+}
+
+.logo {
+    height: 150px;
+}
+
+.intro{
+    width: 60%;
+    margin-bottom: 20px;
+
+}
+
+/*  travel location images*/
+
+nav {
+    background-color: #000000;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    height:58px;
+}
+nav ul li {
+    display: inline-block;
+    padding: 15px;
+}
+nav a {
+    display: inline-block;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+nav a:hover {
+    color: #ffa500;
+}
+
+.container {
+    width: auto;
+    padding: 10px;
+}
+
+.travel-packages {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+.package {
+    flex: 100%;
+}
+.package-frame {
+    border: 1px solid #000000;
+    margin:5px;
+    padding:10px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.package-image {
+    background-color:#d3d3d3;
+    background-size: cover;
+    background-position: center;
+    height:350px;
+    margin-bottom: 18px;
+}
+.package-location {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.package-original-price, .package-new-price, .package-savings {
+    font-size: 14px;
+}
+.package-original-price {
+    color: #999999;
+}
+.package-new-price strong {
+    text-decoration: underline;
+}
+.package-savings {
+    color: green;
+}
+
+.package:hover .package-frame {
+    background-color: #000000;
+}
+.package:hover .package-location, .package:hover .package-new-price {
+    color: #ffffff;
+}
+
+footer {
+    color: #ffffff;
+    background-color: #000000;;
+    padding: 10px;
+}
+
+
+
+#welcome {
+    display: flex;
+    flex-wrap: wrap;
+}
+#welcomeGreeting {
+    flex: 50%;
+}
+#welcomeTime {
+    flex: 50%;
+    text-align: right;
+}
+
+
+/*      TABLET       */
+
+@media only screen and (min-width: 600px) {
+    header {
+        text-align: left;
+    }
+    nav {
+        background-color: #ffffff;
+    }
+    nav a {
+        color: #000000;
+    }
+    nav a:hover {
+        color: red;
+        transform: translateY(-8px);
+    }
+    .container {
+        width: 540px;
+        margin: 0 auto;
+    }
+    .package {
+        flex: 50%;
+    }
+    .package-image {
+        height:250px;
+    }
+
+}
+
+
+/*      DESKTOP       */
+
+@media only screen and (min-width: 920px) {
+    .container {
+        width: 800px;
+        margin: 0 auto;
+    }
+    .package {
+        flex: 25%;
+    }
+    .package-image {
+        height:200px;
+    }
+
+}
