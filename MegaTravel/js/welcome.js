@@ -1,24 +1,23 @@
 //display current date and time
 
 function welcomeTime(){
-
-
-    
+var display = new Date().toLocaleTimeString();
+document.getElementById("currentTime").innerHTML=display;
 }
 let now = new Date(); 
 let hours = now.getHours();
 let welcomeGreeting = document.getElementById('welcomeGreeting');
 let welcomeGreetingText = "";
 let welcomeIcon = document.getElementById('welcomeIcon');
-
+let currentTime= document.getElementById('currentTime');
 //visual icons
 // The visual icon will display a Sun between 6:00am and 6:00pm
 if(hours >= 6 && hours <= 18){
+    welcomeIcon.src = "sunIcon.jpeg";
 
 }
-else{
-
-
+else {
+    welcomeIcon.src = "moonIcon.png";
 // The visual icon will display a Moon between 6:01pm and 5:59am
 }
 
@@ -36,7 +35,7 @@ if (hours >=12 && hours <= 17){
 if (hours > 17 && hours <= 23){
     welcomeGreetingText = " Good night!";
 }
-
+setInterval (welcomeTime,1000);
 
 
 
