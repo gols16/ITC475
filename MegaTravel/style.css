@@ -14,7 +14,7 @@ h1 {
 }
 
 #welcomeDiv {
-    text-align: center;
+    float: right;
 }
 
 .logo {
@@ -112,15 +112,16 @@ footer {
 
 
 #welcome {
-    display: flex;
-    flex-wrap: wrap;
+    text-align:right;
 }
-#welcomeGreeting {
-    flex: 50%;
-}
+
 #welcomeTime {
-    flex: 50%;
     text-align: right;
+}
+#welcomeIcon {
+    text-align: right;
+    height:8%;
+    width: 8%;
 }
 
 
