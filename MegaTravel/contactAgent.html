@@ -24,6 +24,51 @@
         We would love to know more about your travel plans. Please fill out this contact form to get in touch with a travel agent. 
     </p>
 
+    <form name= "reservationForm" id="reservationForm" onsubmit="return onSubmit();" >
+        <label for="firstName">First name:</label><br>
+        <input type="text" id="firstName" name="firstName"><br>
+        <label for="lastName">Last name:</label><br>
+        <input type="text" id="lastName" name="lastName"><br>
+        <label for="email;">Email Address:</label><br>
+        <input type="text" id="email" name="email"><br>
+        <label for="phoneNumber">Phone Number:</label><br>
+        <input type="number" id="phoneNumber" name="phoneNumber"><br>
+        <label for="travelers"> How many children and adults are traveling:</label><br>
+        <input type="number" id="travelers" name="travelers"><br>
+        <label for="startDate"> When do you wish to start your trip:</label><br>
+        <input type="date" id="startDate" name="startDate"><br>
+        <label for="endDate"> When do you wish to end your trip:</label><br>
+        <input type="date" id="endDate" name="endDate"><br>
+    
+
+        <p> Select a Destination:</p>
+        <select name="destination" id="destination" onchange="selectActivity()">
+            <option value="New Zealand">New Zealand</option>
+            <option value="Maldives, South Asia">Maldives, South Asia</option>
+            <option value="Venice, Italy">Venice, Italy</option>
+            <option value="Cancun">Cancun</option>
+        </select>
+
+        <div id="nZDiv" class="nZDiv">
+            <input type="checkbox" name="activity" value="City Tours">City Tours<br>
+            <input type="checkbox" name="activity" value="Sports">Sports<br>
+            <input type="checkbox" name="activity" value="Cycling">Cycling<br>
+            <input type="checkbox" name="activity" value="Museums">Museums<br>
+            <input type="checkbox" name="activity" value="City Tours">City Tours<br>
+
+
+
+
+
+
+        </div>
+
+
+    
+    </form>
+
+
+
     <footer>
         <p>Copyright Protected. All rights reserved.</p>
         <p>MEGA TRAVELS</p>
