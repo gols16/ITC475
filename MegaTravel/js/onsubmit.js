@@ -4,34 +4,32 @@
 //Cancun Parks and Recreation, Beaches, Boating, Snorkeling
 
 // activities 
-
 function selectActivity(destination){
 
     let nZDiv = document.getElementById("nZDiv");
     let mADiv = document.getElementById("mADiv");
     let vIDiv = document.getElementById("vIDiv");
     let cADiv = document.getElementById("cADiv");
-    nZDiv.style.display='none';
+
+   nZDiv.style.display='none';
     mADiv.style.display='none';
-    vIDiv.style.display='none';
-    cADiv.style.display='none';
+   vIDiv.style.display='none';
+   cADiv.style.display='none';
 
 
-
-    if(destination== "New Zealand"){
+    if(destination.value== "New Zealand"){
         nZDiv.style.display= 'block';
 
     }
-    else if(destination == "Maldives, South Asia"){
+    else if(destination.value== "Maldives, South Asia"){
         mADiv.style.display= 'block';
     }
-     else if (destination == "Venice, Italy"){
+     else if(destination == "Venice, Italy"){
         vIDiv.style.display= 'block';
      }
-     else if (destination == "Cancun"){
+     else if(destination == "Cancun"){
         cADiv.style.display= 'block';
     }
-
 }
 
 // Validation
@@ -75,23 +73,10 @@ function onSubmit(){
     else if(document.getElementById('destination').value == ""){
         alert ("Please select an activity from a specific destination")
         return false; 
+
+        //submit button 
+
+        //clear all button
     } 
-    
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-
-
-
 }
 

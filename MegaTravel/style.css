@@ -124,6 +124,22 @@ footer {
     width: 8%;
 }
 
+.nZDiv {
+    display: none;
+}
+
+.mADiv {
+    display: none;
+}
+
+.vIDiv{
+    display: none;
+}
+
+.cADiv{
+    display: none;
+}
+
 
 /*      TABLET       */
 

@@ -3,6 +3,8 @@
 
 <body>
     <link rel="stylesheet" href="style.css"/>
+    <script type="text/javascript" src="onsubmit.js"></script>
+    <script src="onsubmit.js" defer></script>
 
     <h1>
         <img src="site files/mega travel logo.png" alt=" mega travel logo" class="logo"/>
@@ -24,7 +26,7 @@
         We would love to know more about your travel plans. Please fill out this contact form to get in touch with a travel agent. 
     </p>
 
-    <form name= "reservationForm" id="reservationForm" onsubmit="return onSubmit();" >
+    <form name= "reservationForm" id="reservationForm" onsubmit="return onSubmit();" method="post" >
         <label for="firstName">First name:</label><br>
         <input type="text" id="firstName" name="firstName"><br>
         <label for="lastName">Last name:</label><br>
@@ -40,45 +42,48 @@
         <label for="endDate"> When do you wish to end your trip:</label><br>
         <input type="date" id="endDate" name="endDate"><br>
     
-
+<!-- checkboxes so the user can choose which activities they are interested in for the destination they have chosen. 
+    If the user changes the destination, a new group of activities should be shown. -->
         <p> Select a Destination:</p>
-        <select name="destination" id="destination" onchange="selectActivity()">
+            <option hidden="" disabled="disabled" selected="selected" value="none"></option>
+            <select name="destination" id="destination" onchange="selectActivity(destination)">
             <option value="New Zealand">New Zealand</option>
             <option value="Maldives, South Asia">Maldives, South Asia</option>
             <option value="Venice, Italy">Venice, Italy</option>
             <option value="Cancun">Cancun</option>
         </select>
 
-        <div id="nZDiv" class="nZDiv">
-            <input type="checkbox" name="activity" value="City Tours">City Tours<br>
-            <input type="checkbox" name="activity" value="Sports">Sports<br>
-            <input type="checkbox" name="activity" value="Cycling">Cycling<br>
-            <input type="checkbox" name="activity" value="Museums">Museums<br>
-            <input type="checkbox" name="activity" value="Boating">Boating<br>
+        <div id="nZDiv" class="nZDiv" >
+            <input type="checkbox" name="activityN[]" value="City Tours">City Tours<br>
+            <input type="checkbox" name="activityN[]" value="Sports">Sports<br>
+            <input type="checkbox" name="activityN[]" value="Cycling">Cycling<br>
+            <input type="checkbox" name="activityN[]" value="Museums">Museums<br>
+            <input type="checkbox" name="activityN[]" value="Boating">Boating<br>
             <br>
         </div>
         <div id="mADiv" class="mADiv">
-            <input type="checkbox" name="activity" value="Museums">Museums<br>
-            <input type="checkbox" name="activity" value="Sailing">Sailing<br>
-            <input type="checkbox" name="activity" value="Beach">Beach<br>
-            <input type="checkbox" name="activity" value="Hiking">Hiking<br>
-            <input type="checkbox" name="activity" value="Boating">Boating<br>
+            <input type="checkbox" name="activityM[]" value="Museums">Museums<br>
+            <input type="checkbox" name="activityM[]" value="Sailing">Sailing<br>
+            <input type="checkbox" name="activityM[]" value="Beach">Beach<br>
+            <input type="checkbox" name="activityM[]" value="Hiking">Hiking<br>
+            <input type="checkbox" name="activityM[]" value="Boating">Boating<br>
             <br>
         </div>    
         <div id="vIDiv" class="vIDiv">
-            <input type="checkbox" name="activity" value="Museums">Museums<br>
-            <input type="checkbox" name="activity" value="Theatre">Theatre<br>
-            <input type="checkbox" name="activity" value="Parks and Recreation">Parks and Recreation<br>
-            <input type="checkbox" name="activity" value="City Tours">City Tours<br>
+            <input type="checkbox" name="activityV[]" value="Museums">Museums<br>
+            <input type="checkbox" name="activityV[]" value="Theatre">Theatre<br>
+            <input type="checkbox" name="activityV[]" value="Parks and Recreation">Parks and Recreation<br>
+            <input type="checkbox" name="activityV[]" value="City Tours">City Tours<br>
             <br>
         </div>
         <div id="cADiv" class="cADiv">
-            <input type="checkbox" name="activity" value="Parks and Recreation">Parks and Recreation<br>
-            <input type="checkbox" name="activity" value="Beach">Beach<br>
-            <input type="checkbox" name="activity" value="Boating">Boating<br>
-            <input type="checkbox" name="activity" value="Snorkeling">Snorkeling<br>
+            <input type="checkbox" name="activityC[]" value="Parks and Recreation">Parks and Recreation<br>
+            <input type="checkbox" name="activityC[]" value="Beach">Beach<br>
+            <input type="checkbox" name="activityC[]" value="Boating">Boating<br>
+            <input type="checkbox" name="activityC[]" value="Snorkeling">Snorkeling<br>
         </div>
-
+        <input type="reset" value="Reset">
+        <input type="submit" value="Submit">
 
     
     </form>
