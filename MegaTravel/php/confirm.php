@@ -5,7 +5,12 @@
     <link rel="stylesheet" href="style.css"/>
     <script type="text/javascript" src="onsubmit.js"></script>
     <script src="onsubmit.js" defer></script>
-
+    <script src="js/welcome.js" defer></script>
+    <div id = "welcomeDiv">
+        <p id = "currentTime"></p>
+        <p id="welcomeGreetingText"></p>
+        <img id="welcomeIcon" src="aa.png" alt="Welcome Icon">
+    </div>
     <h1>
         <img src="site files/mega travel logo.png" alt=" mega travel logo" class="logo"/>
     </h1>
@@ -21,6 +26,7 @@
     </nav>
 /* new page called confirm.php that is shown to customers after they submit the travel reservation contact form
 //All of the submitted information from the form should be populated on this page.
+
 //you will add this data into a MySQL table.  You will use your existing confirmation.php script to take the form data and stores it into a MySQL table. You only need to create one table in MySQL to store your data.
 */
 
@@ -34,7 +40,16 @@
             echo "<strong>Destination: </strong>".$_POST["destination"]. "<br>"."<br>";
             echo "<strong>Travel Dates: </strong>".$_POST["startDate"]. " through ". $_POST["endDate"]. "<br>"."<br>";
 
-
+            <?php
+                       if (isset($_POST['submit'])){
+                            if(!empty($_POST['activity'])){
+                                foreach($_POST['activity'] as $selected){
+                                echo $selected . "</br>";
+                                }
+                            }
+                        } 
+                    ?>
+               <p> An agent will be in touch with you soon! <br> </p>
 <!--Footer-->
  <footer>
         <p>Copyright Protected. All rights reserved.</p>
@@ -44,4 +59,5 @@
     
     </body>
 </html>
+
 
