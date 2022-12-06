@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css" /> 
+        <script src="smartHome.js"></script>
+        <title> Smart Home Simulator </title>
+        <h1>Smart Home Panel</h1>
+        <nav>
+            <ul>
+                <li><a href="homeStatus.html">Smart Home Status</a></li>
+                <li><a href="smartHomePanel.html">Smart Home Panel Settings</a></li>
+            </ul>
+        </nav>
+    </head>
+    <main>
+        <form onsubmit="return validateForm();" method="get" action="homeStatus.html">
+                    <select id="devices" class="devices" name="devices" onchange="deviceSettings()">
+                        <option value="livingRoom">Living Room Lamp</option>
+                        <option value="bed1Lamp">Bedroom #1 Desk Lamp</option>
+                        <option value="bed2Lamp">Bedroom #2 Floor Lamp</option>
+                        <option value="bathroomFan">Bathroom Fan</option>
+                        <option value="washer">Washer</option>
+                        <option value="dryer">Dryer</option>
+                        <option value="frontDoor">Front Door</option>
+                        <option value="backDoor">Back Door</option>
+                        <option value="garageDoor">Garage Door</option>
+                        <option value="kitchenFan">Kitchen Fan</option>
+                        <option value="diningRoomLight">Dining Room Light</option>
+                    </select>
+                    <div id="livingRoomDiv" class="livingRoomDiv" style="display: none;">
+                        <label for="startTime">Start time:</label><br>
+                        <input type="time" name="livingRoomLampStart" id="livingRoomLampStart"><br>
+                        <label for="endTime">End time:</label><br>
+                        <input type="time" name="livingRoomLampEnd" id="livingRoomLampEnd"><br>
+                        <br>
+                    </div>
+                    <div id="bed1LampDiv" class="bed1LampDiv" style="display: none;">
+                        <label for="startTime">Start time:</label><br>
+                        <input type="time" name="bed1LampStart" id="bed1LampStart"><br>
+                        <label for="endTime">End time:</label><br>
+                        <input type="time" name="bed1LampEnd" id="bed1LampEnd"><br>
+                        <br>
+                    </div>
+                    <div id="bed2LampDiv" class="bed2LampDiv" style="display: none;">
+                        <label for="startTime">Start time:</label><br>
+                        <input type="time" name="bed2LampStart" id="bed2LampStart"><br>
+                        <label for="endTime">End time:</label><br>
+                        <input type="time" name="bed2LampEnd" id="bed2LampEnd"><br>
+                        <br>
+                    </div>
+                    <div id="bathroomFanDiv" class="bathroomFanDiv" style="display: none;">
+                        <label for="startTime">Start time:</label><br>
+                        <input type="time" name="bathroomFanStart" id="bathroomFanStart"><br>
+                        <label for="endTime">End time:</label><br>
+                        <input type="time" name="bathroomFanEnd" id="bathroomFanEnd"><br>
+                        <br>
+                    </div>
+                    <div id="washerDiv" class="washerDiv" style="display: none;">
+                        <label for="startTime">Start time:</label><br>
+                        <input type="time" name="washerStart" id="washerStart"><br>
+                        <label for="endTime">End time:</label><br>
+                        <input type="time" name="washerEnd" id="washerEnd"><br>
+                        <br>
+                    </div>
+                    <div id="dryerDiv" class="dryerDiv" style="display: none;">
+                        <label for="startTime">Start time:</label><br>
+                        <input type="time" name="dryerStart" id="dryerStart"><br>
+                        <label for="endTime">End time:</label><br>
+                        <input type="time" name="dryerEnd" id="dryerEnd"><br>
+                        <br>
+                    </div>
+                    <div id="frontDoorDiv" class="frontDoorDiv" style="display: none;">
+                        <label for="startTime">Start time:</label><br>
+                        <input type="time" name="frontDoorStart" id="frontDoorStart"><br>
+                        <label for="endTime">End time:</label><br>
+                        <input type="time" name="frontDoorEnd" id="frontDoorEnd"><br>
+                        <br>
+                    </div>
+                    <div id="backDoorDiv" class="backDoorDiv" style="display: none;">
+                        <label for="startTime">Start time:</label><br>
+                        <input type="time" name="backDoorStart" id="backDoorStart"><br>
+                        <label for="endTime">End time:</label><br>
+                        <input type="time" name="backDoorEnd" id="backDoorEnd"><br>
+                        <br>
+                    </div>
+                    <div id="garageDoorDiv" class="garageDoorDiv" style="display: none;">
+                        <label for="startTime">Start time:</label><br>
+                        <input type="time" name="garageDoorStart" id="garageDoorStart"><br>
+                        <label for="endTime">End time:</label><br>
+                        <input type="time" name="garageDoorEnd" id="garageDoorEnd"><br>
+                        <br>
+                    </div>
+                    <div id="kitchenFanDiv" class="kitchenFanDiv" style="display: none;">
+                        <label for="startTime">Start time:</label><br>
+                        <input type="time" name="kitchenFanStart" id="kitchenFanStart"><br>
+                        <label for="endTime">End time:</label><br>
+                        <input type="time" name="kitchenFanEnd" id="kitchenFanEnd"><br>
+                        <br>
+                    </div>
+                    <div id="diningRoomLightDiv" class="diningRoomLightDiv" style="display: none;">
+                        <label for="startTime">Start time:</label><br>
+                        <input type="time" name="diningRoomLightStart" id="diningRoomLightStart"><br>
+                        <label for="endTime">End time:</label><br>
+                        <input type="time" name="diningRoomLightEnd" id="diningRoomLightEnd"><br>
+                        <br>
+                    </div>
+                    <br>
+                    <input type="submit" value="Submit" text-align: center;/>
+                </div>  
+            </form>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
