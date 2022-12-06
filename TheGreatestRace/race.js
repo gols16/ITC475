@@ -10,7 +10,6 @@ luigi.src= "luigi.png";
 mario.src= "mario.png";
 peach.src= "peach.png";
 yoshi.src= "yoshi.png";
-
 let characterCount=0;
 let characters=[];
 let character1 = null;
@@ -176,5 +175,150 @@ function addCharacter(character){
                 countDownElement.remove();
             }
             function moveCharacters(ms){
+                let char1num =  Math.floor(Math.random() * 11);
+                let char2num = Math.floor(Math.random() * 11);
+                let finishLine = document.getElementById("finishline");
+
+                if (previousMs !== 0) {
+                    var delta = ms - previousMs;
+                    character1.style.left = character1.style.left || 0;
+                    character1.style.left = parseFloat(character1.style.left) + (char1num * delta / 500) + '%';
+                    character2.style.left = character2.style.left || 0;
+                    character2.style.left = parseFloat(character2.style.left) + (char2num * delta / 500) + '%';
+            }
+            previousMs=ms;
+            if(elementsOverlap(finishLine, character1)){
+                winner="Character 1";
+                cancelAnimationFrame(moveCharacters);
+                displayWinner(winner);
+            } 
+            else if(elementsOverlap(finishLine, character2)) {
+                winner = "Character 1";
+                cancelAnimationFrame(moveCharacters);
+                displayWinner(winner);
+            }
+            else{
+                requestAnimationFrame(moveCharacters);
+                isTouchingStopLight(elementsOverlap(character1, stopLight));
+            }
+        }
+        function elementsOverlap(el1, el2) {
+            const domRect1 = el1.getBoundingClientRect();
+            const domRect2 = el2.getBoundingClientRect();
+        
+            return !(
+                domRect1.top > domRect2.bottom ||
+                domRect1.right < domRect2.left ||
+                domRect1.bottom < domRect2.top ||
+                domRect1.left > domRect2.right
+            );
+        }
+        function isTouchingStopLight(isTouching) {
+            if (isTouching) {
+                stopLight.style.opacity = "30%";
+            }
+            else {
+                stopLight.style.opacity = "100%";
+            }
+        }
+        function displayWinner(winner){
+
+            let winnerText = "";
+            let winnerLabel = document.createElement("div");
+            let winnerImage;
+        
+            if(winner == "Character 1") {
+                switch(character1) {
+                    case luigi:
+                        winnerText= "Luigi is the Winner!";
+                        winnerColorTxt("green", winnerLabel);
+                        winnerImage= luigi;
+                        winner= "Luigi";
+                        break;
+                        case mario:
+                        winnerText= "Mario is the Winner!";
+                        winnerColorTxt("red", winnerLabel);
+                        winnerImage= mario;
+                        winner= "Mario";
+                        break;
+                        case peach:
+                        winnerText= "Peach is the Winner!";
+                        winnerColorTxt("pink", winnerLabel);
+                        winnerImage= peach;
+                        winner= "peach";
+                        break;
+                        case yoshi:
+                        winnerText= "Yoshi is the Winner!";
+                        winnerColorTxt("blue", winnerLabel);
+                        winnerImage= yoshi;
+                        winner= "Yoshi";
+                        break;
+                }
+            }
+            else if(winner = "Character 2"){
+                switch(character2){
+                    case luigi:
+                        winnerText= "Luigi is the Winner!";
+                        winnerColorTxt("green", winnerLabel);
+                        winnerImage= luigi;
+                        winner= "Luigi";
+                        break;
+                        case mario:
+                        winnerText= "Mario is the Winner!";
+                        winnerColorTxt("red", winnerLabel);
+                        winnerImage= mario;
+                        winner= "Mario";
+                        break;
+                        case peach:
+                        winnerText= "Peach is the Winner!";
+                        winnerColorTxt("pink", winnerLabel);
+                        winnerImage= peach;
+                        winner= "peach";
+                        break;
+                        case yoshi:
+                        winnerText= "Yoshi is the Winner!";
+                        winnerColorTxt("blue", winnerLabel);
+                        winnerImage= yoshi;
+                        winner= "Yoshi";
+                        break;
+
+                }
+            }
+            winnerLabel.innerHTML = winnerText;
+            document.getElementById("winnerLabel").appendChild(winnerLabel);
+            document.getElementById("winnerImg").appendChild(winnerImage);
+            cardContent.style.display = "flex";
+            winnerImage.style.maxWidth = "100%";
+            winnerImage.style.height = "auto";
+            sendServer();
+
+            function winnerColorTxt(color, winnerLabel){
+                winnerLabel.style.color=color;
 
             }
+            function sendServer(){
+                let XHR = new XMLHttpRequest();
+                racingTime= new Date().toISOString().slice(0, 19).replace('T', ' ');
+                let params = "racingTime="+racingTime+"&characterRacing1="+characterRacing1+
+                "&characterRacing2="+characterRacing2+"&winner="+winner;
+                xhr.open('POST', 'stats.php', true);
+                xhr.open('POST', 'Process Statistics.php', true);
+                xhr.onload = function(){
+                    console.log(this.responseText);
+                }
+            
+                xhr.send(params);
+            }
+            function saveRacingStats(character1, character2){
+
+                switch(character1){
+                    case luigi:{
+                        characterracing 1
+
+
+
+                }
+                console.log(characterRacing1);
+                console.log(characterRacing2);
+            }
+
