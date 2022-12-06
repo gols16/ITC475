@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css" /> 
+        <script src="smartHome.js"></script>
+        <nav>
+            <ul>
+                <li><a href="homeStatus.html"> Smart Home Status</a></li>
+                <li><a href="smartHomePanel.html">Smart Home Panel Settings</a></li>
+            </ul>
+        </nav>
+        <button type="button" id="btn_Run" onclick="runTime">Run</button>
+        <script>
+            function deviceSetting() {
+                var currentDate = new Date();
+                var currentTime = currentDate.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+                var url = decodeURIComponent(window.location.search);
+                document.getElementById("runTime").innerHTML = currentTime;
+
+                var livingRoomLampStart = url.substring(url.indexOf('livingRoomLampStart=')+20, url.indexOf('livingRoomLampEnd=')-1);
+                var livingRoomLampEnd = url.substring(url.indexOf('livingRoomLampEnd=')+18, url.indexOf('bed1LampStart=')-1);
+                if(livingRoomLampStart == '' || livingRoomLampEnd == '') {
+                    document.getElementById("livingRoomLampSetting").src = "offButton.png";
+                }
+                else {
+                    var startLivingRoomLamp = new Date();
+                    startLivingRoomLamp.setHours(livingRoomLampStart.substring(0, 2), livingRoomLampStart.substring(3, 5), 0);
+                    var endLivingRoomLamp = new Date();
+                    endLivingRoomLamp.setHours(livingRoomLampEnd.substring(0, 2), livingRoomLampEnd.substring(3, 5), 0);
+                    if(currentDate >= startLivingRoomLamp && currentDate <= endLivingRoomLamp) {
+                        document.getElementById("livingRoomLampSetting").src = "onButton.png";
+                    }
+                    else {
+                        document.getElementById("livingRoomLampSetting").src = "offButton.png";
+                    }
+                }
+                var bed1LampStart = url.substring(url.indexOf('bed1LampStart=')+14, url.indexOf('bed1LampEnd=')-1);
+                var bed1LampEnd = url.substring(url.indexOf('bed1LampEnd=')+12, url.indexOf('bed2LampStart=')-1);
+                if(bed1LampStart == '' || bed1LampEnd == '') {
+                    document.getElementById("bed1LampSetting").src = "offButton.png";
+                }
+                else {
+                    var startBed1Lamp = new Date();
+                    startBed1Lamp.setHours(bed1LampStart.substring(0, 2), bed1LampStart.substring(3, 5), 0);
+                    var endBed1Lamp = new Date();
+                    endBed1Lamp.setHours(bed1LampEnd.substring(0, 2), bed1LampEnd.substring(3, 5), 0);
+                    if(currentDate >= startBed1Lamp && currentDate <= endBed1Lamp) {
+                        document.getElementById("bed1LampSetting").src = "onButton.png";
+                    }
+                    else {
+                        document.getElementById("bed1LampSetting").src = "offButton.png";
+                    }
+                }
+                var bed2LampStart = url.substring(url.indexOf('bed2LampStart=')+14, url.indexOf('bed2LampEnd=')-1);
+                var bed2LampEnd = url.substring(url.indexOf('bed2LampEnd=')+12, url.indexOf('bathroomFanStart=')-1);
+                if(bed2LampStart == '' || bed2LampEnd == '') {
+                    document.getElementById("bed2LampSetting").src = "offButton.png";
+                }
+                else {
+                    var startBed2Lamp = new Date();
+                    startBed2Lamp.setHours(bed2LampStart.substring(0, 2), bed2LampStart.substring(3, 5), 0);
+                    var endBed2Lamp = new Date();
+                    endBed2Lamp.setHours(bed2LampEnd.substring(0, 2), bed2LampEnd.substring(3, 5), 0);
+                    if(currentDate >= startBed2Lamp && currentDate <= endBed2Lamp) {
+                        document.getElementById("bed2LampSetting").src = "onButton.png";
+                    }
+                    else {
+                        document.getElementById("bed2LampSetting").src = "offButton.png";
+                    }
+                }
+                var bathroomFanStart = url.substring(url.indexOf('bathroomFanStart=')+17, url.indexOf('bathroomFanEnd=')-1);
+                var bathroomFanEnd = url.substring(url.indexOf('bathroomFanEnd=')+15, url.indexOf('washerStart=')-1);
+                if(bathroomFanStart == '' || bathroomFanEnd == '') {
+                    document.getElementById("bathroomFanSetting").src = "offButton.png";
+                }
+                else {
+                    var startBathroomFan = new Date();
+                    startBathroomFan.setHours(bathroomFanStart.substring(0, 2), bathroomFanStart.substring(3, 5), 0);
+                    var endBathroomFan = new Date();
+                    endBathroomFan.setHours(bathroomFanEnd.substring(0, 2), bathroomFanEnd.substring(3, 5), 0);
+                    if(currentDate >= startBathroomFan && currentDate <= endBathroomFan) {
+                        document.getElementById("bathroomFanSetting").src = "onButton.png";
+                    }
+                    else {
+                        document.getElementById("bathroomFanSetting").src = "offButton.png";
+                    }
+                }
+                var washerStart = url.substring(url.indexOf('washerStart=')+12, url.indexOf('washerEnd=')-1);
+                var washerEnd = url.substring(url.indexOf('washerEnd=')+10, url.indexOf('dryerStart=')-1);
+                if(washerStart == '' || washerEnd == '') {
+                    document.getElementById("washerSetting").src = "offButton.png";
+                }
+                else {
+                    var startWasher = new Date();
+                    startWasher.setHours(washerStart.substring(0, 2), washerStart.substring(3, 5), 0);
+                    var endWasher = new Date();
+                    endWasher.setHours(washerEnd.substring(0, 2), washerEnd.substring(3, 5), 0);
+                    if(currentDate >= startWasher && currentDate <= endWasher) {
+                        document.getElementById("washerSetting").src = "switch-on.png";
+                    }
+                    else {
+                        document.getElementById("washerSetting").src = "offButton.png";
+                    }
+                }
+                var dryerStart = url.substring(url.indexOf('dryerStart=')+11, url.indexOf('dryerEnd=')-1);
+                var dryerEnd = url.substring(url.indexOf('dryerEnd=')+9, url.indexOf('frontDoorStart=')-1);
+                if(dryerStart == '' || dryerEnd == '') {
+                    document.getElementById("dryerSetting").src = "offButton.png";
+                }
+                else {
+                    var startDryer = new Date();
+                    startDryer.setHours(dryerStart.substring(0, 2), dryerStart.substring(3, 5), 0);
+                    var endDryer = new Date();
+                    endDryer.setHours(dryerEnd.substring(0, 2), dryerEnd.substring(3, 5), 0);
+                    if(currentDate >= startDryer && currentDate <= endDryer) {
+                        document.getElementById("dryerSetting").src = "onButton.png";
+                    }
+                    else {
+                        document.getElementById("dryerSetting").src = "offButton.png";
+                    }
+                }
+                var frontDoorStart = url.substring(url.indexOf('frontDoorStart=')+15, url.indexOf('frontDoorEnd=')-1);
+                var frontDoorEnd = url.substring(url.indexOf('frontDoorEnd=')+13, url.indexOf('backDoorStart=')-1);
+                if(frontDoorStart == '' || frontDoorEnd == '') {
+                    document.getElementById("frontDoorSetting").src = "offButton.png";
+                }
+                else {
+                    
+                    var startFrontDoor = new Date();
+                    startFrontDoor.setHours(frontDoorStart.substring(0, 2), frontDoorStart.substring(3, 5), 0);
+                    var endFrontDoor = new Date();
+                    endFrontDoor.setHours(frontDoorEnd.substring(0, 2), frontDoorEnd.substring(3, 5), 0);
+                    if(currentDate >= startFrontDoor && currentDate <= endFrontDoor) {
+                        document.getElementById("frontDoorSetting").src = "onButton.png";
+                    }
+                    else {
+                        document.getElementById("frontDoorSetting").src = "offButton.png";
+                    }
+                }
+                var backDoorStart = url.substring(url.indexOf('backDoorStart=')+14, url.indexOf('backDoorEnd=')-1);
+                var backDoorEnd = url.substring(url.indexOf('backDoorEnd=')+12, url.indexOf('garageDoorStart=')-1);
+                if(backDoorStart == '' || backDoorEnd == '') {
+                    document.getElementById("backDoorSetting").src = "offButton.png";
+                }
+                else {
+                    var startBackDoor = new Date();
+                    startBackDoor.setHours(backDoorStart.substring(0, 2), backDoorStart.substring(3, 5), 0);
+                    var endBackDoor = new Date();
+                    endBackDoor.setHours(backDoorEnd.substring(0, 2), backDoorEnd.substring(3, 5), 0);
+                    if(currentDate >= startBackDoor && currentDate <= endBackDoor) {
+                        document.getElementById("backDoorSetting").src = "onButton.png";
+                    }
+                    else {
+                        document.getElementById("backDoorSetting").src = "offButton.png";
+                    }
+                }
+                var garageDoorStart = url.substring(url.indexOf('garageDoorStart=')+16, url.indexOf('garageDoorEnd=')-1);
+                var garageDoorEnd = url.substring(url.indexOf('garageDoorEnd=')+14, url.indexOf('kitchenFanStart=')-1);
+                if(garageDoorStart == '' || garageDoorEnd == '') {
+                    document.getElementById("garageDoorSetting").src = "offButton.png";
+                }
+                else {
+                    var startGarageDoor = new Date();
+                    startGarageDoor.setHours(garageDoorStart.substring(0, 2), garageDoorStart.substring(3, 5), 0);
+                    var endGarageDoor = new Date();
+                    endGarageDoor.setHours(garageDoorEnd.substring(0, 2), garageDoorEnd.substring(3, 5), 0);
+                    if(currentDate >= startGarageDoor && currentDate <= endGarageDoor) {
+                        document.getElementById("garageDoorSetting").src = "onButton.png";
+                    }
+                    else {
+                        document.getElementById("garageDoorSetting").src = "offButton.png";
+                    }
+                }
+                var kitchenFanStart = url.substring(url.indexOf('kitchenFanStart=')+16, url.indexOf('kitchenFanEnd=')-1);
+                var kitchenFanEnd = url.substring(url.indexOf('kitchenFanEnd=')+14, url.indexOf('diningLightStart=')-1);
+                if(kitchenFanStart == '' || kitchenFanEnd == '') {
+                    document.getElementById("kitchenFanSetting").src = "offButton.png";
+                }
+                else {
+                    var startKitchenFan = new Date();
+                    startKitchenFan.setHours(kitchenFanStart.substring(0, 2), kitchenFanStart.substring(3, 5), 0);
+                    var endKitchenFan = new Date();
+                    endKitchenFan.setHours(kitchenFanEnd.substring(0, 2), kitchenFanEnd.substring(3, 5), 0);
+                    if(currentDate >= startKitchenFan && currentDate <= endKitchenFan) {
+                        document.getElementById("kitchenFanSetting").src = "onButton.png";
+                    }
+                    else {
+                        document.getElementById("kitchenFanSetting").src = "offButton.png";
+                    }
+                }
+                var diningRoomLightStart = url.substring(url.indexOf('diningRoomLightStart=')+17, url.indexOf('diningLightEnd=')-1);
+                var diningRoomLightEnd = url.substring(url.indexOf('diningRoomLightEnd=')+15);
+                if(diningRoomLightStart == '' || diningRoomLightEnd == '') {
+                    document.getElementById("diningRoomLightSetting").src = "offButton.png";
+                }
+                else {
+                    var startDiningRoom = new Date();
+                    startDiningRoom.setHours(diningRoomLightStart.substring(0, 2), diningRoomLightStart.substring(3, 5), 0);
+                    var endDiningRoom = new Date();
+                    endDiningRoom.setHours(diningRoomLightEnd.substring(0, 2), diningRoomLightEnd.substring(3, 5), 0);
+                    if(currentDate >= startDiningRoom && currentDate <= endDiningRoom) {
+                        document.getElementById("diningRoomLightSetting").src = "onButton.png";
+                    }
+                    else {
+                        document.getElementById("diningRoomLightSetting").src = "offButton.png";
+                    }
+                }
+            }
+            setInterval(deviceSetting, 1000);
+        </script>
+    </head>
+    <body>
+        <h1 id="runTime" name="runTime" style="text-align:center"></h1>
+        <div>
+            <table>
+                <tr>
+                    <th class="deviceSetting">Smart Home Device</th>
+                    <th class="deviceSetting">Smart Device Settings</th>
+                </tr>
+                <tr>
+                    <td class="deviceLabel">Living Room Lamp</td>
+                    <td><img id="livingRoomLampSetting" class="onOrOff" src=""></td>
+                </tr>
+                <tr>
+                    <td class="deviceLabel">Bedroom #1 Lamp</td>
+                    <td><img id="bed1LampSetting" class="onOrOff" src=""></td>
+                </tr>
+                <tr>
+                    <td class="deviceLabel">Bedroom #2 Lamp</td>
+                    <td><img id="bed2LampSetting" class="onOrOff" src=""></td>
+                </tr>
+                <tr>
+                    <td class="deviceLabel">Bathroom Fan</td>
+                    <td><img id="bathroomFanSetting" class="onOrOff" src=""></td>
+                </tr>
+                <tr>
+                    <td class="deviceLabel">Washer</td>
+                    <td><img id="washerSetting" class="onOrOff" src=""></td>
+                </tr>
+                <tr>
+                    <td class="deviceLabel">Dryer</td>
+                    <td><img id="dryerSetting" class="onOrOff" src=""></td>
+                </tr>
+                <tr>
+                    <td class="deviceLabel">Front Door</td>
+                    <td><img id="frontDoorSetting" class="onOrOff" src=""></td>
+                </tr>
+                <tr>
+                    <td class="deviceLabel">Back Door</td>
+                    <td><img id="backDoorSetting" class="onOrOff" src=""></td>
+                </tr>
+                <tr>
+                    <td class="deviceLabel">Garage Door</td>
+                    <td><img id="garageDoorSetting" class="onOrOff" src=""></td>
+                </tr>
+                <tr>
+                    <td class="deviceLabel">Kitchen Fan</td>
+                    <td><img id="kitchenFanSetting" class="onOrOff" src=""></td>
+                </tr>
+                <tr>
+                    <td class="deviceLabel">Dining Room Light</td>
+                    <td><img id="diningRoomLightSetting" class="onOrOff" src=""></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
