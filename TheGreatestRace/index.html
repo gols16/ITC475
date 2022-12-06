@@ -1,1 +1,42 @@
 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>The Greatest Race</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <nav>
+        <ul>
+            <li><a href="stats.php">Race Result Statistics</a></li>
+        </ul>
+    </nav>
+
+    <h1> Choose 2 Characters to Race!</h1> 
+    <body>
+        <div class="selectCharacter">
+            <div class="characterDiv" id="luigi" onclick="addCharacter('luigi');">
+                <img src="luigi.png" alt="luigi" class="luigi">
+                <div><i>Luigi</i></div>
+            </div>
+            <div class="characterDiv" id="mario" onclick="addCharacter('mario');">
+                <img src="Mario.png" alt="mario" class="mario">
+                <div><i>Mario</i></div>
+            </div>
+            <div class="characterDiv" id="peach" onclick="addCharacter('peach');">
+                <img src="peach.png" alt="peach" class="peach">
+                <div><i>Peach</i></div>
+            </div>
+            <div class="characterDiv" id="yoshi" onclick="addCharacter('yoshi');">
+                <img src="yoshi.png" alt="yoshi" class="yoshi">
+                <div><i>Yoshi</i></div>
+            </div>
+            <div class="btnDiv">
+                <button id="raceButton" onclick="raceSetUp();" disabled><b>START RACE!</b></button>
+            </div>
+        </div>
+        <footer>
+        </footer>
+        <script src="race.js"></script>
+    </body>
+</html>
