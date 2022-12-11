@@ -3,40 +3,78 @@
 <html lang="en">
     <head>
         <title>The Greatest Race</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="styles.css">
+
     </head>
 
-    <nav>
-        <ul>
-            <li><a href="stats.php">Race Result Statistics</a></li>
-        </ul>
-    </nav>
-
-    <h1> Choose 2 Characters to Race!</h1> 
     <body>
-        <div class="selectCharacter">
-            <div class="characterDiv" id="luigi" onclick="addCharacter('luigi');">
-                <img src="luigi.png" alt="luigi" class="luigi">
-                <div><i>Luigi</i></div>
+        <nav>
+            <ul>
+                <li><a href="stats.php">Race Result Statistics</a></li>
+            </ul>
+        </nav>
+        <div class="CountDownWrapper" id="countDownWrapper"></div>
+                <div class="WinnerWrapper" id="winnerWrapper">
+                    <div class="WinnerContents" id="winnerContents">
+                        <div class="WinnerLabel" id="winnerLabel"></div>
+                        <div class="WinnerInfoDiv" id="winnerInfoDiv">
+                            <div class="WinnerImageDiv" id="winnerImageDiv" onclick="location.reload();"></div>
+                            <div class="RestartButtonDiv">
+                                <button type="button" class="ChooseNewcharactersButton" onclick="location.reload();">CHOOSE NEW CHARACTERS</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="RaceTrack" id="RaceTrack">
+                    <div class="charactersWrapper">
+                        <div class="characterOneDiv" id="characterOne"></div>
+                        <div class="characterTwoDiv" id="characterTwo"></div>
+                    </div>
+                    <div class="FinishLine" id="finishline">
+                        <div class="WhiteStripe"></div>
+                        <div class="WhiteStripe"></div>
+                        <div class="WhiteStripe"></div>
+                        <div class="WhiteStripe"></div>
+                        <div class="WhiteStripe"></div>
+                        <div class="WhiteStripe"></div>
+                    </div>
+                </div>
+                <div class="StopLight" id="stoplight">
+                    <div class="RedLight" id="redlight"></div>
+                    <div class="GreenLight" id="greenlight"></div>
+                </div>
             </div>
-            <div class="characterDiv" id="mario" onclick="addCharacter('mario');">
-                <img src="Mario.png" alt="mario" class="mario">
-                <div><i>Mario</i></div>
-            </div>
-            <div class="characterDiv" id="peach" onclick="addCharacter('peach');">
-                <img src="peach.png" alt="peach" class="peach">
-                <div><i>Peach</i></div>
-            </div>
-            <div class="characterDiv" id="yoshi" onclick="addCharacter('yoshi');">
-                <img src="yoshi.png" alt="yoshi" class="yoshi">
-                <div><i>Yoshi</i></div>
-            </div>
-            <div class="btnDiv">
-                <button id="raceButton" onclick="raceSetUp();" disabled><b>START RACE!</b></button>
+
+        <h1> Choose 2 Characters to Race!</h1> 
+        <div class="CharacterSelectionWrapper" id="CharacterSelectionWrapper">
+            <div class="CharacterSelectionMiddle">
+                <div class="SelectionTitle">Choose Your characters!</div>
+                <div class="CharacterSelectionContent">
+                    <div class="characterDiv" id="luigicharacterSet" onclick="addSelectedcharacter('luigi');">
+                        <img src="luigi.png" alt="luigicharacterSet" class="characterSetImage">
+                        <div><i>luigi</i></div>
+                    </div>
+                    <div class="characterDiv" id="mariocharacterSet" onclick="addSelectedcharacter('mario');">
+                        <img src="mario.png" alt="mariocharacterSet" class="characterSetImage">
+                        <div><i>mario</i></div>
+                    </div>
+                    <br>
+                    <div class="characterDiv" id="peachcharacterSet" onclick="addSelectedcharacter('peach');">
+                        <img src="peach.png" alt="characterSetView" class="characterSetImage">
+                        <div><i>peach</i></div>
+                    </div>
+                    <div class="characterDiv" id="yoshicharacterSet" onclick="addSelectedcharacter('yoshi');">
+                        <img src="yoshi.png" alt="yoshicharacterSet" class="characterSetImage">
+                        <div><i>yoshi</i></div>
+                    </div>
+                    <div class="ButtonDiv">
+                        <button id="raceButton" onclick="raceSetUp();" disabled><b>RACE!</b></button>
+                    </div>
+                </div>
             </div>
         </div>
-        <footer>
-        </footer>
+    </div>
         <script src="race.js"></script>
     </body>
+    
 </html>
