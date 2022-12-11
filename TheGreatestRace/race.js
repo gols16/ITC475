@@ -30,16 +30,11 @@ let characters = [];
 
 let characterNumberOne = null;
 let characterNumberTwo = null;
-
 let movecharactersInterval;
-
 let stopLight = document.getElementById("stoplight");
 let winnerWrapper = document.getElementById("winnerWrapper");
-
 let animate;
 let previousMs = 0;
-
-// Variables to pass to database
 let winnerDBValue;
 let timestamp;
 let characterOne;
@@ -381,22 +376,11 @@ function setWinnerLabelColor(color, winnerLabel){
 function sendDataToServer(){
     
     let xhr = new XMLHttpRequest();
-
-    // Data to send to server
-    // - timestamp of when race took place
-    // - which characters competed
-    // - who won the race
-
-    // get the current timestamp
     timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    
     let params = "timestamp="+timestamp+"&CharacterOne="+characterOne+
         "&partipantTwo="+characterTwo+"&winner="+winnerDBValue;
-    
-    xhr.open('POST', 'Process Statistics.php', true);
-
+    xhr.open('POST', 'stats.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
     xhr.onload = function(){
         console.log(this.responseText);
     }
